@@ -1,0 +1,94 @@
+{
+ "actions": [],
+ "autoname": "naming_series:title",
+ "creation": "2026-02-10 11:36:04.777485",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "naming_series",
+  "title",
+  "category",
+  "column_break_h0vz",
+  "billing_type",
+  "base_price",
+  "section_break_q4rw",
+  "description"
+ ],
+ "fields": [
+  {
+   "fieldname": "title",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "in_preview": 1,
+   "in_standard_filter": 1,
+   "label": "Title",
+   "reqd": 1,
+   "unique": 1
+  },
+  {
+   "fieldname": "category",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "in_preview": 1,
+   "in_standard_filter": 1,
+   "label": "Category",
+   "options": "App\nWebsite\nERP\nBranding",
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_h0vz",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "billing_type",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Billing Type",
+   "options": "One Time\nMonthly\nYearly",
+   "placeholder": "select any",
+   "reqd": 1
+  },
+  {
+   "bold": 1,
+   "fetch_if_empty": 1,
+   "fieldname": "base_price",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "in_preview": 1,
+   "label": "Base Price"
+  },
+  {
+   "fieldname": "section_break_q4rw",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "description",
+   "fieldtype": "Long Text",
+   "label": "Description"
+  },
+  {
+   "default": "HI",
+   "fieldname": "naming_series",
+   "fieldtype": "Data",
+   "hidden": 1,
+   "label": "ID",
+   "reqd": 1
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "istable": 1,
+ "links": [],
+ "modified": "2026-02-11 10:35:39.524702",
+ "modified_by": "Administrator",
+ "module": "Services",
+ "name": "Services Document",
+ "naming_rule": "By \"Naming Series\" field",
+ "owner": "Administrator",
+ "permissions": [],
+ "row_format": "Dynamic",
+ "rows_threshold_for_grid_search": 20,
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

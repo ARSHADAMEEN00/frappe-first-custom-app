@@ -1,0 +1,111 @@
+{
+    "actions": [],
+    "autoname": "hash",
+    "creation": "2026-02-11 10:25:13.752674",
+    "doctype": "DocType",
+    "engine": "InnoDB",
+    "field_order": [
+        "full_name",
+        "phone",
+        "email",
+        "dob",
+        "age",
+        "photo",
+        "section_break_muwz",
+        "services",
+        "services_needed",
+        "amended_from"
+    ],
+    "fields": [
+        {
+            "fieldname": "section_break_muwz",
+            "fieldtype": "Section Break"
+        },
+        {
+            "fieldname": "phone",
+            "fieldtype": "Phone",
+            "in_list_view": 1,
+            "in_preview": 1,
+            "in_standard_filter": 1,
+            "label": "Phone",
+            "reqd": 1
+        },
+        {
+            "fieldname": "email",
+            "fieldtype": "Data",
+            "label": "Email"
+        },
+        {
+            "fieldname": "dob",
+            "fieldtype": "Date",
+            "label": "DOB"
+        },
+        {
+            "fieldname": "age",
+            "fieldtype": "Int",
+            "label": "Age"
+        },
+        {
+            "fieldname": "photo",
+            "fieldtype": "Attach Image",
+            "label": "Photo"
+        },
+        {
+            "fieldname": "services",
+            "fieldtype": "Table",
+            "label": "Services",
+            "options": "Services Document"
+        },
+        {
+            "default": "0",
+            "fieldname": "services_needed",
+            "fieldtype": "Check",
+            "label": "Services Needed"
+        },
+        {
+            "fieldname": "amended_from",
+            "fieldtype": "Link",
+            "label": "Amended From",
+            "no_copy": 1,
+            "options": "Services Registration",
+            "print_hide": 1,
+            "read_only": 1,
+            "search_index": 1
+        },
+        {
+            "fieldname": "full_name",
+            "fieldtype": "Data",
+            "label": "Full Name"
+        }
+    ],
+    "grid_page_length": 50,
+    "index_web_pages_for_search": 1,
+    "is_submittable": 1,
+    "links": [],
+    "modified": "2026-02-11 10:58:30.595343",
+    "modified_by": "Administrator",
+    "module": "Ameen App",
+    "name": "Services Registration",
+    "naming_rule": "Random",
+    "owner": "Administrator",
+    "permissions": [
+        {
+            "create": 1,
+            "delete": 1,
+            "email": 1,
+            "export": 1,
+            "print": 1,
+            "read": 1,
+            "report": 1,
+            "role": "System Manager",
+            "share": 1,
+            "submit": 1,
+            "write": 1
+        }
+    ],
+    "row_format": "Dynamic",
+    "rows_threshold_for_grid_search": 20,
+    "sort_field": "modified",
+    "sort_order": "DESC",
+    "states": []
+}

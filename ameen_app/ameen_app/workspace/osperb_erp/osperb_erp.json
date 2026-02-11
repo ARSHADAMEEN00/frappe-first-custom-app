@@ -1,0 +1,102 @@
+{
+ "charts": [],
+ "content": "[{\"id\":\"mPGFSjReEl\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\">Osperb ERP</span>\",\"col\":12}},{\"id\":\"p4X62O01KH\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Services List\",\"col\":4}},{\"id\":\"Rn2NQIIP8F\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Clients List\",\"col\":4}},{\"id\":\"PirJGdWlH3\",\"type\":\"card\",\"data\":{\"card_name\":\"Latest Registrations\",\"col\":4}}]",
+ "creation": "2026-02-11 09:45:18",
+ "custom_blocks": [],
+ "docstatus": 0,
+ "doctype": "Workspace",
+ "for_user": "",
+ "hide_custom": 0,
+ "icon": "color-review-points",
+ "idx": 0,
+ "indicator_color": "",
+ "is_hidden": 0,
+ "label": "Osperb ERP",
+ "links": [
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Services List",
+   "link_count": 0,
+   "link_to": "Services Document",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Accounts",
+   "link_count": 0,
+   "link_to": "Account",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Latest Registrations",
+   "link_count": 2,
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Card Break"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "POS",
+   "link_count": 0,
+   "link_to": "point-of-sale",
+   "link_type": "Page",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "HI",
+   "link_count": 0,
+   "link_to": "Asset Depreciation Ledger",
+   "link_type": "Report",
+   "onboard": 0,
+   "report_ref_doctype": "Asset",
+   "type": "Link"
+  }
+ ],
+ "modified": "2026-02-11 10:34:50.613444",
+ "modified_by": "Administrator",
+ "module": "Ameen App",
+ "name": "Osperb ERP",
+ "number_cards": [],
+ "owner": "Administrator",
+ "parent_page": "",
+ "public": 1,
+ "quick_lists": [],
+ "roles": [],
+ "sequence_id": 1.0,
+ "shortcuts": [
+  {
+   "color": "Orange",
+   "doc_view": "Dashboard",
+   "format": "{} Clients",
+   "icon": "users",
+   "label": "Clients List",
+   "link_to": "Client Document",
+   "stats_filter": "[]",
+   "type": "DocType",
+   "url": ""
+  },
+  {
+   "color": "Blue",
+   "format": "{} Services",
+   "icon": "file-text",
+   "label": "Services List",
+   "link_to": "Services Document",
+   "stats_filter": "{}",
+   "type": "DocType",
+   "url": ""
+  }
+ ],
+ "title": "Osperb ERP"
+}
