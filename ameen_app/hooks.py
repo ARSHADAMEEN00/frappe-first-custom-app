@@ -8,6 +8,9 @@ app_license = "mit"
 # Apps
 # ------------------
 
+app_include_css = "/assets/ameen_app/css/osperb_desk_theme.css"
+app_include_js = "/assets/ameen_app/js/osperb_desk_theme.js"
+
 # required_apps = []
 
 # Each item in the list will be shown as an app in the apps page

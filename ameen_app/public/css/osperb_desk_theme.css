@@ -1,0 +1,181 @@
+/* =======================
+   Osperb Desk Theme UI
+   ======================= */
+:root {
+    --os-primary: #1677FF;
+    --os-deep: #0B5FFF;
+    --os-bg: #F5F7FB;
+    --os-card: #FFFFFF;
+    --os-text: #0F172A;
+    --os-muted: #64748B;
+    --os-border: rgba(15, 23, 42, .08);
+    --os-shadow: 0 12px 28px rgba(15, 23, 42, .06);
+    --os-radius: 16px;
+}
+
+/* Background */
+body.osperb-theme-active,
+body.osperb-theme-active .app-wrapper,
+body.osperb-theme-active .desk-container,
+body.osperb-theme-active .layout-main-section-wrapper {
+    background: var(--os-bg) !important;
+}
+
+/* Topbar */
+body.osperb-theme-active header.navbar,
+body.osperb-theme-active .navbar {
+    background: #fff !important;
+    border-bottom: 1px solid var(--os-border) !important;
+    box-shadow: 0 8px 20px rgba(15, 23, 42, .03) !important;
+}
+
+/* Hide original sidebar (we will replace it) */
+body.osperb-theme-active .layout-side-section,
+body.osperb-theme-active .desk-sidebar {
+    display: none !important;
+}
+
+/* Give space for our new rail + panel */
+body.osperb-theme-active .layout-main-section-wrapper {
+    padding-left: 310px !important;
+}
+
+/* Our injected container */
+#osperb-rail {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 74px;
+    background: var(--os-deep);
+    z-index: 9999;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 12px 10px;
+    gap: 10px;
+}
+
+#osperb-rail .os-logo {
+    width: 46px;
+    height: 46px;
+    border-radius: 14px;
+    background: rgba(255, 255, 255, .18);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-weight: 800;
+    margin-bottom: 6px;
+}
+
+#osperb-rail .os-item {
+    width: 54px;
+    height: 54px;
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: rgba(255, 255, 255, .92);
+    cursor: pointer;
+    user-select: none;
+    transition: all .15s ease;
+}
+
+#osperb-rail .os-item:hover {
+    background: rgba(255, 255, 255, .12);
+}
+
+#osperb-rail .os-item.active {
+    background: rgba(255, 255, 255, .22);
+    box-shadow: 0 12px 22px rgba(0, 0, 0, .12);
+}
+
+/* Submenu panel */
+#osperb-panel {
+    position: fixed;
+    top: 62px;
+    /* below navbar */
+    left: 86px;
+    /* after rail */
+    height: calc(100vh - 82px);
+    width: 236px;
+    background: #fff;
+    border: 1px solid var(--os-border);
+    border-radius: 18px;
+    box-shadow: var(--os-shadow);
+    z-index: 9998;
+    overflow: auto;
+    padding: 14px;
+}
+
+#osperb-panel .os-title {
+    font-weight: 800;
+    color: var(--os-text);
+    margin: 6px 4px 12px;
+    font-size: 16px;
+}
+
+#osperb-panel .os-link {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 12px;
+    margin: 6px 0;
+    border-radius: 14px;
+    color: var(--os-text);
+    text-decoration: none;
+    border: 1px solid transparent;
+    transition: all .15s ease;
+}
+
+#osperb-panel .os-link:hover {
+    background: rgba(22, 119, 255, .06);
+    border-color: rgba(22, 119, 255, .22);
+}
+
+#osperb-panel .os-link small {
+    color: var(--os-muted);
+    font-weight: 600;
+}
+
+/* Workspace cards styling (same modern style) */
+body.osperb-theme-active .card,
+body.osperb-theme-active .widget,
+body.osperb-theme-active .widget-body,
+body.osperb-theme-active .widget-group,
+body.osperb-theme-active .dashboard-widget {
+    background: var(--os-card) !important;
+    border: 1px solid var(--os-border) !important;
+    border-radius: var(--os-radius) !important;
+    box-shadow: var(--os-shadow) !important;
+}
+
+body.osperb-theme-active .btn-primary {
+    background: var(--os-primary) !important;
+    border-color: var(--os-primary) !important;
+    border-radius: 12px !important;
+}
+
+body.osperb-theme-active .form-control,
+body.osperb-theme-active input,
+body.osperb-theme-active select,
+body.osperb-theme-active textarea {
+    border-radius: 12px !important;
+}
+
+/* KPI tile feel */
+body.osperb-theme-active .number-widget,
+body.osperb-theme-active .number-card {
+    border-radius: 14px !important;
+    padding: 16px 18px !important;
+    box-shadow: 0 12px 22px rgba(15, 23, 42, .06) !important;
+}
+
+#osperb-panel .os-sections {
+    padding-bottom: 8px;
+}
+
+#osperb-panel {
+    scrollbar-width: thin;
+}
