@@ -1,93 +1,171 @@
 <style>
-/* Remove standard frappe page padding to let our dashboard shine */
-body.osperb-theme-active .page-head {
-    display: none !important;
-}
-body.osperb-theme-active .layout-main {
-    background: transparent !important;
-    border: none !important;
-    padding: 0 !important;
-}
-body.osperb-theme-active .row.layout-main-section {
-    background: transparent !important;
-}
+    /* Remove standard frappe page padding to let our dashboard shine */
+    body.osperb-theme-active .page-head {
+        display: none !important;
+    }
 
-body.osperb-theme-active .page-body {
-    padding: 0 !important;
-}
+    body.osperb-theme-active .layout-main {
+        background: transparent !important;
+        border: none !important;
+        padding: 0 !important;
+    }
+
+    body.osperb-theme-active .row.layout-main-section {
+        background: transparent !important;
+    }
+
+    body.osperb-theme-active .page-body {
+        padding: 0 !important;
+    }
 </style>
 
-<div class="osperb-demo-dashboard" style="padding: 30px; max-width: 1400px; margin: 0 auto; display: flex; flex-direction: column; gap: 30px;">
-    
+<div class="osperb-demo-dashboard"
+    style="padding: 30px; max-width: 1400px; margin: 0 auto; display: flex; flex-direction: column; gap: 30px;">
+
     <!-- Welcome Banner with Glassmorphism / Gradient feel -->
-    <div class="welcome-card" style="background: linear-gradient(135deg, white 0%, #f0f7ff 100%); border-radius: 18px; padding: 36px 40px; border: 1px solid rgba(22, 119, 255, 0.15); box-shadow: 0 10px 30px rgba(22, 119, 255, 0.05); display: flex; justify-content: space-between; align-items: center; position: relative; overflow: hidden;">
+    <div class="welcome-card"
+        style="background: linear-gradient(135deg, white 0%, #f0f7ff 100%); border-radius: 18px; padding: 36px 40px; border: 1px solid rgba(22, 119, 255, 0.15); box-shadow: 0 10px 30px rgba(22, 119, 255, 0.05); display: flex; justify-content: space-between; align-items: center; position: relative; overflow: hidden;">
         <!-- Deco elements -->
-        <div style="position: absolute; right: -50px; top: -50px; width: 250px; height: 250px; background: radial-gradient(circle, rgba(22,119,255,0.1) 0%, rgba(22,119,255,0) 70%); border-radius: 50%;"></div>
-        <div style="position: absolute; right: 150px; bottom: -80px; width: 200px; height: 200px; background: radial-gradient(circle, rgba(139,92,246,0.1) 0%, rgba(139,92,246,0) 70%); border-radius: 50%;"></div>
-        
+        <div
+            style="position: absolute; right: -50px; top: -50px; width: 250px; height: 250px; background: radial-gradient(circle, rgba(22,119,255,0.1) 0%, rgba(22,119,255,0) 70%); border-radius: 50%;">
+        </div>
+        <div
+            style="position: absolute; right: 150px; bottom: -80px; width: 200px; height: 200px; background: radial-gradient(circle, rgba(139,92,246,0.1) 0%, rgba(139,92,246,0) 70%); border-radius: 50%;">
+        </div>
+
         <div style="position: relative; z-index: 1;">
-            <h2 style="margin: 0 0 12px; color: var(--os-text); font-weight: 800; font-size: 28px; letter-spacing: -0.5px;">Welcome to Osperb ERP</h2>
-            <p style="margin: 0 0 24px; color: var(--os-muted); font-size: 16px; max-width: 500px; line-height: 1.5;">A modern, stylish, and powerful interface for your business operations. Tailored to help your team work faster and smarter.</p>
+            <h2
+                style="margin: 0 0 12px; color: var(--os-text); font-weight: 800; font-size: 28px; letter-spacing: -0.5px;">
+                Welcome to Osperb ERP</h2>
+            <p style="margin: 0 0 24px; color: var(--os-muted); font-size: 16px; max-width: 500px; line-height: 1.5;">A
+                modern, stylish, and powerful interface for your business operations. Tailored to help your team work
+                faster and smarter.</p>
             <div style="display: flex; gap: 15px;">
-                <button class="btn btn-primary" style="padding: 10px 24px; font-weight: 600; font-size: 15px; box-shadow: 0 4px 12px rgba(22, 119, 255, 0.3);">Create Sales Invoice</button>
-                <button class="btn btn-default" style="padding: 10px 24px; font-weight: 600; font-size: 15px; background: white; border: 1px solid var(--os-border); color: var(--os-text); box-shadow: 0 2px 5px rgba(0,0,0,0.02);">View Reports</button>
+                <button class="btn btn-primary"
+                    style="padding: 10px 24px; font-weight: 600; font-size: 15px; box-shadow: 0 4px 12px rgba(22, 119, 255, 0.3);">Create
+                    Sales Invoice</button>
+                <button class="btn btn-default"
+                    style="padding: 10px 24px; font-weight: 600; font-size: 15px; background: white; border: 1px solid var(--os-border); color: var(--os-text); box-shadow: 0 2px 5px rgba(0,0,0,0.02);">View
+                    Reports</button>
             </div>
         </div>
         <div style="position: relative; z-index: 1; margin-right: 40px;">
-            <div style="width: 140px; height: 140px; background: rgba(255, 255, 255, 0.8); border: 1px solid rgba(255,255,255,0.5); backdrop-filter: blur(10px); border-radius: 24px; display: flex; align-items: center; justify-content: center; font-size: 64px; box-shadow: 0 16px 32px rgba(22, 119, 255, 0.1); transform: rotate(10deg);">🚀</div>
+            <div
+                style="width: 140px; height: 140px; background: rgba(255, 255, 255, 0.8); border: 1px solid rgba(255,255,255,0.5); backdrop-filter: blur(10px); border-radius: 24px; display: flex; align-items: center; justify-content: center; color: var(--os-primary); box-shadow: 0 16px 32px rgba(22, 119, 255, 0.1); transform: rotate(10deg);">
+                <svg stroke="currentColor" fill="none" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round"
+                    stroke-linejoin="round" height="64" width="64" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z">
+                    </path>
+                    <path
+                        d="m12 15-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z">
+                    </path>
+                    <path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0"></path>
+                    <path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5"></path>
+                </svg>
+            </div>
         </div>
     </div>
 
     <!-- KPI Section (Modern Cards) -->
     <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 24px;">
-        <div class="number-card" style="background: white; border: 1px solid var(--os-border); display: flex; flex-direction: column; position: relative; overflow: hidden;">
-            <div style="position: absolute; top:0; left:0; width: 4px; height: 100%; background: var(--os-primary);"></div>
+        <div class="number-card"
+            style="background: white; border: 1px solid var(--os-border); display: flex; flex-direction: column; position: relative; overflow: hidden;">
+            <div style="position: absolute; top:0; left:0; width: 4px; height: 100%; background: var(--os-primary);">
+            </div>
             <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px;">
                 <div style="color: var(--os-muted); font-weight: 600; font-size: 15px;">Monthly Revenue</div>
-                <div style="width: 32px; height: 32px; background: rgba(22, 119, 255, 0.1); color: var(--os-primary); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 16px;">💰</div>
+                <div
+                    style="width: 32px; height: 32px; background: rgba(22, 119, 255, 0.1); color: var(--os-primary); border-radius: 8px; display: flex; align-items: center; justify-content: center;">
+                    <svg stroke="currentColor" fill="none" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round"
+                        stroke-linejoin="round" height="18" width="18" xmlns="http://www.w3.org/2000/svg">
+                        <line x1="12" y1="1" x2="12" y2="23"></line>
+                        <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
+                    </svg>
+                </div>
             </div>
-            <div style="font-size: 32px; font-weight: 800; color: var(--os-text); letter-spacing: -0.5px;">$124,500</div>
-            <div style="color: #10b981; font-size: 14px; font-weight: 600; margin-top: 12px; display: flex; align-items: center; gap: 4px;">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
+            <div style="font-size: 32px; font-weight: 800; color: var(--os-text); letter-spacing: -0.5px;">$124,500
+            </div>
+            <div
+                style="color: #10b981; font-size: 14px; font-weight: 600; margin-top: 12px; display: flex; align-items: center; gap: 4px;">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M12 19V5M5 12l7-7 7 7" />
+                </svg>
                 12.5% vs last month
             </div>
         </div>
-        
-        <div class="number-card" style="background: white; border: 1px solid var(--os-border); display: flex; flex-direction: column; position: relative; overflow: hidden;">
+
+        <div class="number-card"
+            style="background: white; border: 1px solid var(--os-border); display: flex; flex-direction: column; position: relative; overflow: hidden;">
             <div style="position: absolute; top:0; left:0; width: 4px; height: 100%; background: #8b5cf6;"></div>
             <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px;">
                 <div style="color: var(--os-muted); font-weight: 600; font-size: 15px;">Active Customers</div>
-                <div style="width: 32px; height: 32px; background: rgba(139, 92, 246, 0.1); color: #8b5cf6; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 16px;">👥</div>
+                <div
+                    style="width: 32px; height: 32px; background: rgba(139, 92, 246, 0.1); color: #8b5cf6; border-radius: 8px; display: flex; align-items: center; justify-content: center;">
+                    <svg stroke="currentColor" fill="none" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round"
+                        stroke-linejoin="round" height="18" width="18" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                        <circle cx="9" cy="7" r="4"></circle>
+                        <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                        <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                    </svg>
+                </div>
             </div>
             <div style="font-size: 32px; font-weight: 800; color: var(--os-text); letter-spacing: -0.5px;">1,284</div>
-            <div style="color: #10b981; font-size: 14px; font-weight: 600; margin-top: 12px; display: flex; align-items: center; gap: 4px;">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
+            <div
+                style="color: #10b981; font-size: 14px; font-weight: 600; margin-top: 12px; display: flex; align-items: center; gap: 4px;">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M12 19V5M5 12l7-7 7 7" />
+                </svg>
                 3.2% vs last month
             </div>
         </div>
 
-        <div class="number-card" style="background: white; border: 1px solid var(--os-border); display: flex; flex-direction: column; position: relative; overflow: hidden;">
+        <div class="number-card"
+            style="background: white; border: 1px solid var(--os-border); display: flex; flex-direction: column; position: relative; overflow: hidden;">
             <div style="position: absolute; top:0; left:0; width: 4px; height: 100%; background: #f59e0b;"></div>
             <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px;">
                 <div style="color: var(--os-muted); font-weight: 600; font-size: 15px;">Open Tickets</div>
-                <div style="width: 32px; height: 32px; background: rgba(245, 158, 11, 0.1); color: #f59e0b; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 16px;">🎫</div>
+                <div
+                    style="width: 32px; height: 32px; background: rgba(245, 158, 11, 0.1); color: #f59e0b; border-radius: 8px; display: flex; align-items: center; justify-content: center;">
+                    <svg stroke="currentColor" fill="none" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round"
+                        stroke-linejoin="round" height="18" width="18" xmlns="http://www.w3.org/2000/svg">
+                        <rect x="3" y="5" width="18" height="14" rx="2" ry="2"></rect>
+                        <line x1="3" y1="12" x2="21" y2="12"></line>
+                    </svg>
+                </div>
             </div>
             <div style="font-size: 32px; font-weight: 800; color: var(--os-text); letter-spacing: -0.5px;">42</div>
-            <div style="color: #ef4444; font-size: 14px; font-weight: 600; margin-top: 12px; display: flex; align-items: center; gap: 4px;">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
+            <div
+                style="color: #ef4444; font-size: 14px; font-weight: 600; margin-top: 12px; display: flex; align-items: center; gap: 4px;">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M12 5v14M5 12l7 7 7-7" />
+                </svg>
                 5 tickets resolved today
             </div>
         </div>
 
-        <div class="number-card" style="background: white; border: 1px solid var(--os-border); display: flex; flex-direction: column; position: relative; overflow: hidden;">
+        <div class="number-card"
+            style="background: white; border: 1px solid var(--os-border); display: flex; flex-direction: column; position: relative; overflow: hidden;">
             <div style="position: absolute; top:0; left:0; width: 4px; height: 100%; background: #ec4899;"></div>
             <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px;">
                 <div style="color: var(--os-muted); font-weight: 600; font-size: 15px;">Pending Orders</div>
-                <div style="width: 32px; height: 32px; background: rgba(236, 72, 153, 0.1); color: #ec4899; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 16px;">🛒</div>
+                <div
+                    style="width: 32px; height: 32px; background: rgba(236, 72, 153, 0.1); color: #ec4899; border-radius: 8px; display: flex; align-items: center; justify-content: center;">
+                    <svg stroke="currentColor" fill="none" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round"
+                        stroke-linejoin="round" height="18" width="18" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="9" cy="21" r="1"></circle>
+                        <circle cx="20" cy="21" r="1"></circle>
+                        <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+                    </svg>
+                </div>
             </div>
             <div style="font-size: 32px; font-weight: 800; color: var(--os-text); letter-spacing: -0.5px;">18</div>
-            <div style="color: var(--os-muted); font-size: 14px; font-weight: 600; margin-top: 12px; display: flex; align-items: center; gap: 4px;">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            <div
+                style="color: var(--os-muted); font-size: 14px; font-weight: 600; margin-top: 12px; display: flex; align-items: center; gap: 4px;">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="12" cy="12" r="10" />
+                    <polyline points="12 6 12 12 16 14" />
+                </svg>
                 Updated just now
             </div>
         </div>
@@ -95,77 +173,232 @@ body.osperb-theme-active .page-body {
 
     <!-- Quick Shortcuts -->
     <div>
-        <h3 style="margin: 0 0 20px; font-size: 18px; font-weight: 800; color: var(--os-text); display: flex; align-items: center; gap: 8px;">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--os-primary)" stroke-width="2.5"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+        <h3
+            style="margin: 0 0 20px; font-size: 18px; font-weight: 800; color: var(--os-text); display: flex; align-items: center; gap: 8px;">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--os-primary)" stroke-width="2.5">
+                <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2" />
+            </svg>
             Quick Shortcuts
         </h3>
         <div style="display: flex; flex-wrap: wrap; gap: 16px;">
-            <div style="flex: 1; min-width: 180px; background: white; border: 1px solid var(--os-border); padding: 18px 24px; border-radius: 14px; font-weight: 600; display: flex; align-items: center; gap: 12px; cursor: pointer; transition: all .2s; box-shadow: 0 2px 4px rgba(0,0,0,0.02);" onmouseover="this.style.transform='translateY(-3px)';this.style.boxShadow='var(--os-shadow)';" onmouseout="this.style.transform='none';this.style.boxShadow='0 2px 4px rgba(0,0,0,0.02)';">
-                <div style="width: 40px; height: 40px; border-radius: 10px; background: #f8fafc; display: flex; align-items: center; justify-content: center; font-size: 20px;">📦</div> 
+            <div style="flex: 1; min-width: 180px; background: white; border: 1px solid var(--os-border); padding: 18px 24px; border-radius: 14px; font-weight: 600; display: flex; align-items: center; gap: 12px; cursor: pointer; transition: all .2s; box-shadow: 0 2px 4px rgba(0,0,0,0.02);"
+                onmouseover="this.style.transform='translateY(-3px)';this.style.boxShadow='var(--os-shadow)';"
+                onmouseout="this.style.transform='none';this.style.boxShadow='0 2px 4px rgba(0,0,0,0.02)';">
+                <div
+                    style="width: 40px; height: 40px; border-radius: 10px; background: #f8fafc; color: var(--os-primary); display: flex; align-items: center; justify-content: center;">
+                    <svg stroke="currentColor" fill="none" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round"
+                        stroke-linejoin="round" height="20" width="20" xmlns="http://www.w3.org/2000/svg">
+                        <line x1="16.5" y1="9.4" x2="7.5" y2="4.21"></line>
+                        <path
+                            d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z">
+                        </path>
+                        <polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline>
+                        <line x1="12" y1="22.08" x2="12" y2="12"></line>
+                    </svg>
+                </div>
                 <span style="font-size: 15px; color: var(--os-text);">Item</span>
             </div>
-            <div style="flex: 1; min-width: 180px; background: white; border: 1px solid var(--os-border); padding: 18px 24px; border-radius: 14px; font-weight: 600; display: flex; align-items: center; gap: 12px; cursor: pointer; transition: all .2s; box-shadow: 0 2px 4px rgba(0,0,0,0.02);" onmouseover="this.style.transform='translateY(-3px)';this.style.boxShadow='var(--os-shadow)';" onmouseout="this.style.transform='none';this.style.boxShadow='0 2px 4px rgba(0,0,0,0.02)';">
-                <div style="width: 40px; height: 40px; border-radius: 10px; background: #f8fafc; display: flex; align-items: center; justify-content: center; font-size: 20px;">👥</div> 
+            <div style="flex: 1; min-width: 180px; background: white; border: 1px solid var(--os-border); padding: 18px 24px; border-radius: 14px; font-weight: 600; display: flex; align-items: center; gap: 12px; cursor: pointer; transition: all .2s; box-shadow: 0 2px 4px rgba(0,0,0,0.02);"
+                onmouseover="this.style.transform='translateY(-3px)';this.style.boxShadow='var(--os-shadow)';"
+                onmouseout="this.style.transform='none';this.style.boxShadow='0 2px 4px rgba(0,0,0,0.02)';">
+                <div
+                    style="width: 40px; height: 40px; border-radius: 10px; background: #f8fafc; color: #8b5cf6; display: flex; align-items: center; justify-content: center;">
+                    <svg stroke="currentColor" fill="none" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round"
+                        stroke-linejoin="round" height="20" width="20" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                        <circle cx="9" cy="7" r="4"></circle>
+                        <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                        <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                    </svg>
+                </div>
                 <span style="font-size: 15px; color: var(--os-text);">Customer</span>
             </div>
-            <div style="flex: 1; min-width: 180px; background: white; border: 1px solid var(--os-border); padding: 18px 24px; border-radius: 14px; font-weight: 600; display: flex; align-items: center; gap: 12px; cursor: pointer; transition: all .2s; box-shadow: 0 2px 4px rgba(0,0,0,0.02);" onmouseover="this.style.transform='translateY(-3px)';this.style.boxShadow='var(--os-shadow)';" onmouseout="this.style.transform='none';this.style.boxShadow='0 2px 4px rgba(0,0,0,0.02)';">
-                <div style="width: 40px; height: 40px; border-radius: 10px; background: #f8fafc; display: flex; align-items: center; justify-content: center; font-size: 20px;">🏭</div> 
+            <div style="flex: 1; min-width: 180px; background: white; border: 1px solid var(--os-border); padding: 18px 24px; border-radius: 14px; font-weight: 600; display: flex; align-items: center; gap: 12px; cursor: pointer; transition: all .2s; box-shadow: 0 2px 4px rgba(0,0,0,0.02);"
+                onmouseover="this.style.transform='translateY(-3px)';this.style.boxShadow='var(--os-shadow)';"
+                onmouseout="this.style.transform='none';this.style.boxShadow='0 2px 4px rgba(0,0,0,0.02)';">
+                <div
+                    style="width: 40px; height: 40px; border-radius: 10px; background: #f8fafc; color: #f59e0b; display: flex; align-items: center; justify-content: center;">
+                    <svg stroke="currentColor" fill="none" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round"
+                        stroke-linejoin="round" height="20" width="20" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M3 21h18"></path>
+                        <path d="M9 8h1"></path>
+                        <path d="M9 12h1"></path>
+                        <path d="M9 16h1"></path>
+                        <path d="M14 8h1"></path>
+                        <path d="M14 12h1"></path>
+                        <path d="M14 16h1"></path>
+                        <path d="M5 21V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v16"></path>
+                    </svg>
+                </div>
                 <span style="font-size: 15px; color: var(--os-text);">Supplier</span>
             </div>
-            <div style="flex: 1; min-width: 180px; background: white; border: 1px solid var(--os-border); padding: 18px 24px; border-radius: 14px; font-weight: 600; display: flex; align-items: center; gap: 12px; cursor: pointer; transition: all .2s; box-shadow: 0 2px 4px rgba(0,0,0,0.02);" onmouseover="this.style.transform='translateY(-3px)';this.style.boxShadow='var(--os-shadow)';" onmouseout="this.style.transform='none';this.style.boxShadow='0 2px 4px rgba(0,0,0,0.02)';">
-                <div style="width: 40px; height: 40px; border-radius: 10px; background: #f0fdf4; display: flex; align-items: center; justify-content: center; font-size: 20px;">🧾</div> 
+            <div style="flex: 1; min-width: 180px; background: white; border: 1px solid var(--os-border); padding: 18px 24px; border-radius: 14px; font-weight: 600; display: flex; align-items: center; gap: 12px; cursor: pointer; transition: all .2s; box-shadow: 0 2px 4px rgba(0,0,0,0.02);"
+                onmouseover="this.style.transform='translateY(-3px)';this.style.boxShadow='var(--os-shadow)';"
+                onmouseout="this.style.transform='none';this.style.boxShadow='0 2px 4px rgba(0,0,0,0.02)';">
+                <div
+                    style="width: 40px; height: 40px; border-radius: 10px; background: #f0fdf4; color: #10b981; display: flex; align-items: center; justify-content: center;">
+                    <svg stroke="currentColor" fill="none" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round"
+                        stroke-linejoin="round" height="20" width="20" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                        <polyline points="14 2 14 8 20 8"></polyline>
+                        <line x1="16" y1="13" x2="8" y2="13"></line>
+                        <line x1="16" y1="17" x2="8" y2="17"></line>
+                        <polyline points="10 9 9 9 8 9"></polyline>
+                    </svg>
+                </div>
                 <span style="font-size: 15px; color: var(--os-text);">Sales Invoice</span>
             </div>
-            <div style="flex: 1; min-width: 180px; background: white; border: 1px solid var(--os-border); padding: 18px 24px; border-radius: 14px; font-weight: 600; display: flex; align-items: center; gap: 12px; cursor: pointer; transition: all .2s; box-shadow: 0 2px 4px rgba(0,0,0,0.02);" onmouseover="this.style.transform='translateY(-3px)';this.style.boxShadow='var(--os-shadow)';" onmouseout="this.style.transform='none';this.style.boxShadow='0 2px 4px rgba(0,0,0,0.02)';">
-                <div style="width: 40px; height: 40px; border-radius: 10px; background: #fffbeb; display: flex; align-items: center; justify-content: center; font-size: 20px;">🏆</div> 
+            <div style="flex: 1; min-width: 180px; background: white; border: 1px solid var(--os-border); padding: 18px 24px; border-radius: 14px; font-weight: 600; display: flex; align-items: center; gap: 12px; cursor: pointer; transition: all .2s; box-shadow: 0 2px 4px rgba(0,0,0,0.02);"
+                onmouseover="this.style.transform='translateY(-3px)';this.style.boxShadow='var(--os-shadow)';"
+                onmouseout="this.style.transform='none';this.style.boxShadow='0 2px 4px rgba(0,0,0,0.02)';">
+                <div
+                    style="width: 40px; height: 40px; border-radius: 10px; background: #fffbeb; color: #f59e0b; display: flex; align-items: center; justify-content: center;">
+                    <svg stroke="currentColor" fill="none" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round"
+                        stroke-linejoin="round" height="20" width="20" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="12" cy="8" r="7"></circle>
+                        <polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"></polyline>
+                    </svg>
+                </div>
                 <span style="font-size: 15px; color: var(--os-text);">Leaderboard</span>
             </div>
         </div>
     </div>
-    
+
     <!-- Reports & Masters -->
     <div>
-        <h3 style="margin: 0 0 20px; font-size: 18px; font-weight: 800; color: var(--os-text); display: flex; align-items: center; gap: 8px;">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#64748B" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>    
+        <h3
+            style="margin: 0 0 20px; font-size: 18px; font-weight: 800; color: var(--os-text); display: flex; align-items: center; gap: 8px;">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#64748B" stroke-width="2">
+                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                <polyline points="14 2 14 8 20 8"></polyline>
+                <line x1="16" y1="13" x2="8" y2="13"></line>
+                <line x1="16" y1="17" x2="8" y2="17"></line>
+                <polyline points="10 9 9 9 8 9"></polyline>
+            </svg>
             Reports & Masters
         </h3>
         <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 24px;">
-            <div class="master-card" style="background: white; border: 1px solid var(--os-border); border-radius: 16px; padding: 24px; box-shadow: 0 4px 12px rgba(15, 23, 42, .02); transition: all 0.2s;" onmouseover="this.style.boxShadow='var(--os-shadow)';" onmouseout="this.style.boxShadow='0 4px 12px rgba(15, 23, 42, .02)';">
-                <div style="font-weight: 800; font-size: 17px; margin-bottom: 20px; color: var(--os-deep); display: flex; align-items: center; gap: 12px;">
-                     <div style="width: 40px; height: 40px; background: rgba(22, 119, 255, 0.1); border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 20px;">📊</div> 
-                     Accounting Workspace
+            <div class="master-card"
+                style="background: white; border: 1px solid var(--os-border); border-radius: 16px; padding: 24px; box-shadow: 0 4px 12px rgba(15, 23, 42, .02); transition: all 0.2s;"
+                onmouseover="this.style.boxShadow='var(--os-shadow)';"
+                onmouseout="this.style.boxShadow='0 4px 12px rgba(15, 23, 42, .02)';">
+                <div
+                    style="font-weight: 800; font-size: 17px; margin-bottom: 20px; color: var(--os-deep); display: flex; align-items: center; gap: 12px;">
+                    <div
+                        style="width: 40px; height: 40px; background: rgba(22, 119, 255, 0.1); border-radius: 10px; color: var(--os-primary); display: flex; align-items: center; justify-content: center;">
+                        <svg stroke="currentColor" fill="none" stroke-width="2" viewBox="0 0 24 24"
+                            stroke-linecap="round" stroke-linejoin="round" height="20" width="20"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <line x1="12" y1="20" x2="12" y2="10"></line>
+                            <line x1="18" y1="20" x2="18" y2="4"></line>
+                            <line x1="6" y1="20" x2="6" y2="16"></line>
+                        </svg>
+                    </div>
+                    Accounting Workspace
                 </div>
                 <div style="display: flex; flex-direction: column; gap: 14px;">
-                    <a href="#" style="color: var(--os-text); text-decoration: none; font-weight: 600; font-size: 15px; display: flex; justify-content: space-between; align-items: center; padding-bottom: 8px; border-bottom: 1px solid var(--os-border);" onmouseover="this.style.color='var(--os-primary)'" onmouseout="this.style.color='var(--os-text)'">Chart of Accounts <span style="color: var(--os-muted); font-size: 12px;">↗</span></a>
-                    <a href="#" style="color: var(--os-text); text-decoration: none; font-weight: 600; font-size: 15px; display: flex; justify-content: space-between; align-items: center; padding-bottom: 8px; border-bottom: 1px solid var(--os-border);" onmouseover="this.style.color='var(--os-primary)'" onmouseout="this.style.color='var(--os-text)'">Company <span style="color: var(--os-muted); font-size: 12px;">↗</span></a>
-                    <a href="#" style="color: var(--os-text); text-decoration: none; font-weight: 600; font-size: 15px; display: flex; justify-content: space-between; align-items: center; padding-bottom: 8px; border-bottom: 1px solid var(--os-border);" onmouseover="this.style.color='var(--os-primary)'" onmouseout="this.style.color='var(--os-text)'">Customer <span style="color: var(--os-muted); font-size: 12px;">↗</span></a>
-                    <a href="#" style="color: var(--os-text); text-decoration: none; font-weight: 600; font-size: 15px; display: flex; justify-content: space-between; align-items: center;" onmouseover="this.style.color='var(--os-primary)'" onmouseout="this.style.color='var(--os-text)'">Supplier <span style="color: var(--os-muted); font-size: 12px;">↗</span></a>
-                </div>
-            </div>
-            
-            <div class="master-card" style="background: white; border: 1px solid var(--os-border); border-radius: 16px; padding: 24px; box-shadow: 0 4px 12px rgba(15, 23, 42, .02); transition: all 0.2s;" onmouseover="this.style.boxShadow='var(--os-shadow)';" onmouseout="this.style.boxShadow='0 4px 12px rgba(15, 23, 42, .02)';">
-                <div style="font-weight: 800; font-size: 17px; margin-bottom: 20px; color: #8b5cf6; display: flex; align-items: center; gap: 12px;">
-                     <div style="width: 40px; height: 40px; background: rgba(139, 92, 246, 0.1); border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 20px;">📦</div> 
-                     Inventory & Stock
-                </div>
-                <div style="display: flex; flex-direction: column; gap: 14px;">
-                    <a href="#" style="color: var(--os-text); text-decoration: none; font-weight: 600; font-size: 15px; display: flex; justify-content: space-between; align-items: center; padding-bottom: 8px; border-bottom: 1px solid var(--os-border);" onmouseover="this.style.color='#8b5cf6'" onmouseout="this.style.color='var(--os-text)'">Item Directory <span style="color: var(--os-muted); font-size: 12px;">↗</span></a>
-                    <a href="#" style="color: var(--os-text); text-decoration: none; font-weight: 600; font-size: 15px; display: flex; justify-content: space-between; align-items: center; padding-bottom: 8px; border-bottom: 1px solid var(--os-border);" onmouseover="this.style.color='#8b5cf6'" onmouseout="this.style.color='var(--os-text)'">Warehouse List <span style="color: var(--os-muted); font-size: 12px;">↗</span></a>
-                    <a href="#" style="color: var(--os-text); text-decoration: none; font-weight: 600; font-size: 15px; display: flex; justify-content: space-between; align-items: center; padding-bottom: 8px; border-bottom: 1px solid var(--os-border);" onmouseover="this.style.color='#8b5cf6'" onmouseout="this.style.color='var(--os-text)'">Brand Management <span style="color: var(--os-muted); font-size: 12px;">↗</span></a>
-                    <a href="#" style="color: var(--os-text); text-decoration: none; font-weight: 600; font-size: 15px; display: flex; justify-content: space-between; align-items: center;" onmouseover="this.style.color='#8b5cf6'" onmouseout="this.style.color='var(--os-text)'">Unit of Measure (UOM) <span style="color: var(--os-muted); font-size: 12px;">↗</span></a>
+                    <a href="#"
+                        style="color: var(--os-text); text-decoration: none; font-weight: 600; font-size: 15px; display: flex; justify-content: space-between; align-items: center; padding-bottom: 8px; border-bottom: 1px solid var(--os-border);"
+                        onmouseover="this.style.color='var(--os-primary)'"
+                        onmouseout="this.style.color='var(--os-text)'">Chart of Accounts <span
+                            style="color: var(--os-muted); font-size: 12px;">↗</span></a>
+                    <a href="#"
+                        style="color: var(--os-text); text-decoration: none; font-weight: 600; font-size: 15px; display: flex; justify-content: space-between; align-items: center; padding-bottom: 8px; border-bottom: 1px solid var(--os-border);"
+                        onmouseover="this.style.color='var(--os-primary)'"
+                        onmouseout="this.style.color='var(--os-text)'">Company <span
+                            style="color: var(--os-muted); font-size: 12px;">↗</span></a>
+                    <a href="#"
+                        style="color: var(--os-text); text-decoration: none; font-weight: 600; font-size: 15px; display: flex; justify-content: space-between; align-items: center; padding-bottom: 8px; border-bottom: 1px solid var(--os-border);"
+                        onmouseover="this.style.color='var(--os-primary)'"
+                        onmouseout="this.style.color='var(--os-text)'">Customer <span
+                            style="color: var(--os-muted); font-size: 12px;">↗</span></a>
+                    <a href="#"
+                        style="color: var(--os-text); text-decoration: none; font-weight: 600; font-size: 15px; display: flex; justify-content: space-between; align-items: center;"
+                        onmouseover="this.style.color='var(--os-primary)'"
+                        onmouseout="this.style.color='var(--os-text)'">Supplier <span
+                            style="color: var(--os-muted); font-size: 12px;">↗</span></a>
                 </div>
             </div>
 
-            <div class="master-card" style="background: white; border: 1px solid var(--os-border); border-radius: 16px; padding: 24px; box-shadow: 0 4px 12px rgba(15, 23, 42, .02); transition: all 0.2s;" onmouseover="this.style.boxShadow='var(--os-shadow)';" onmouseout="this.style.boxShadow='0 4px 12px rgba(15, 23, 42, .02)';">
-                <div style="font-weight: 800; font-size: 17px; margin-bottom: 20px; color: #f59e0b; display: flex; align-items: center; gap: 12px;">
-                     <div style="width: 40px; height: 40px; background: rgba(245, 158, 11, 0.1); border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 20px;">👥</div> 
-                     Customer Protocol
+            <div class="master-card"
+                style="background: white; border: 1px solid var(--os-border); border-radius: 16px; padding: 24px; box-shadow: 0 4px 12px rgba(15, 23, 42, .02); transition: all 0.2s;"
+                onmouseover="this.style.boxShadow='var(--os-shadow)';"
+                onmouseout="this.style.boxShadow='0 4px 12px rgba(15, 23, 42, .02)';">
+                <div
+                    style="font-weight: 800; font-size: 17px; margin-bottom: 20px; color: #8b5cf6; display: flex; align-items: center; gap: 12px;">
+                    <div
+                        style="width: 40px; height: 40px; background: rgba(139, 92, 246, 0.1); border-radius: 10px; color: #8b5cf6; display: flex; align-items: center; justify-content: center;">
+                        <svg stroke="currentColor" fill="none" stroke-width="2" viewBox="0 0 24 24"
+                            stroke-linecap="round" stroke-linejoin="round" height="20" width="20"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <line x1="16.5" y1="9.4" x2="7.5" y2="4.21"></line>
+                            <path
+                                d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z">
+                            </path>
+                            <polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline>
+                            <line x1="12" y1="22.08" x2="12" y2="12"></line>
+                        </svg>
+                    </div>
+                    Inventory & Stock
                 </div>
                 <div style="display: flex; flex-direction: column; gap: 14px;">
-                    <a href="#" style="color: var(--os-text); text-decoration: none; font-weight: 600; font-size: 15px; display: flex; justify-content: space-between; align-items: center; padding-bottom: 8px; border-bottom: 1px solid var(--os-border);" onmouseover="this.style.color='#f59e0b'" onmouseout="this.style.color='var(--os-text)'">Sales Leads <span style="color: var(--os-muted); font-size: 12px;">↗</span></a>
-                    <a href="#" style="color: var(--os-text); text-decoration: none; font-weight: 600; font-size: 15px; display: flex; justify-content: space-between; align-items: center; padding-bottom: 8px; border-bottom: 1px solid var(--os-border);" onmouseover="this.style.color='#f59e0b'" onmouseout="this.style.color='var(--os-text)'">Customer Groups <span style="color: var(--os-muted); font-size: 12px;">↗</span></a>
-                    <a href="#" style="color: var(--os-text); text-decoration: none; font-weight: 600; font-size: 15px; display: flex; justify-content: space-between; align-items: center; padding-bottom: 8px; border-bottom: 1px solid var(--os-border);" onmouseover="this.style.color='#f59e0b'" onmouseout="this.style.color='var(--os-text)'">Sales Territories <span style="color: var(--os-muted); font-size: 12px;">↗</span></a>
-                    <a href="#" style="color: var(--os-text); text-decoration: none; font-weight: 600; font-size: 15px; display: flex; justify-content: space-between; align-items: center;" onmouseover="this.style.color='#f59e0b'" onmouseout="this.style.color='var(--os-text)'">Opportunities <span style="color: var(--os-muted); font-size: 12px;">↗</span></a>
+                    <a href="#"
+                        style="color: var(--os-text); text-decoration: none; font-weight: 600; font-size: 15px; display: flex; justify-content: space-between; align-items: center; padding-bottom: 8px; border-bottom: 1px solid var(--os-border);"
+                        onmouseover="this.style.color='#8b5cf6'" onmouseout="this.style.color='var(--os-text)'">Item
+                        Directory <span style="color: var(--os-muted); font-size: 12px;">↗</span></a>
+                    <a href="#"
+                        style="color: var(--os-text); text-decoration: none; font-weight: 600; font-size: 15px; display: flex; justify-content: space-between; align-items: center; padding-bottom: 8px; border-bottom: 1px solid var(--os-border);"
+                        onmouseover="this.style.color='#8b5cf6'"
+                        onmouseout="this.style.color='var(--os-text)'">Warehouse List <span
+                            style="color: var(--os-muted); font-size: 12px;">↗</span></a>
+                    <a href="#"
+                        style="color: var(--os-text); text-decoration: none; font-weight: 600; font-size: 15px; display: flex; justify-content: space-between; align-items: center; padding-bottom: 8px; border-bottom: 1px solid var(--os-border);"
+                        onmouseover="this.style.color='#8b5cf6'" onmouseout="this.style.color='var(--os-text)'">Brand
+                        Management <span style="color: var(--os-muted); font-size: 12px;">↗</span></a>
+                    <a href="#"
+                        style="color: var(--os-text); text-decoration: none; font-weight: 600; font-size: 15px; display: flex; justify-content: space-between; align-items: center;"
+                        onmouseover="this.style.color='#8b5cf6'" onmouseout="this.style.color='var(--os-text)'">Unit of
+                        Measure (UOM) <span style="color: var(--os-muted); font-size: 12px;">↗</span></a>
+                </div>
+            </div>
+
+            <div class="master-card"
+                style="background: white; border: 1px solid var(--os-border); border-radius: 16px; padding: 24px; box-shadow: 0 4px 12px rgba(15, 23, 42, .02); transition: all 0.2s;"
+                onmouseover="this.style.boxShadow='var(--os-shadow)';"
+                onmouseout="this.style.boxShadow='0 4px 12px rgba(15, 23, 42, .02)';">
+                <div
+                    style="font-weight: 800; font-size: 17px; margin-bottom: 20px; color: #f59e0b; display: flex; align-items: center; gap: 12px;">
+                    <div
+                        style="width: 40px; height: 40px; background: rgba(245, 158, 11, 0.1); border-radius: 10px; color: #f59e0b; display: flex; align-items: center; justify-content: center;">
+                        <svg stroke="currentColor" fill="none" stroke-width="2" viewBox="0 0 24 24"
+                            stroke-linecap="round" stroke-linejoin="round" height="20" width="20"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                            <circle cx="9" cy="7" r="4"></circle>
+                            <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                            <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                        </svg>
+                    </div>
+                    Customer Protocol
+                </div>
+                <div style="display: flex; flex-direction: column; gap: 14px;">
+                    <a href="#"
+                        style="color: var(--os-text); text-decoration: none; font-weight: 600; font-size: 15px; display: flex; justify-content: space-between; align-items: center; padding-bottom: 8px; border-bottom: 1px solid var(--os-border);"
+                        onmouseover="this.style.color='#f59e0b'" onmouseout="this.style.color='var(--os-text)'">Sales
+                        Leads <span style="color: var(--os-muted); font-size: 12px;">↗</span></a>
+                    <a href="#"
+                        style="color: var(--os-text); text-decoration: none; font-weight: 600; font-size: 15px; display: flex; justify-content: space-between; align-items: center; padding-bottom: 8px; border-bottom: 1px solid var(--os-border);"
+                        onmouseover="this.style.color='#f59e0b'" onmouseout="this.style.color='var(--os-text)'">Customer
+                        Groups <span style="color: var(--os-muted); font-size: 12px;">↗</span></a>
+                    <a href="#"
+                        style="color: var(--os-text); text-decoration: none; font-weight: 600; font-size: 15px; display: flex; justify-content: space-between; align-items: center; padding-bottom: 8px; border-bottom: 1px solid var(--os-border);"
+                        onmouseover="this.style.color='#f59e0b'" onmouseout="this.style.color='var(--os-text)'">Sales
+                        Territories <span style="color: var(--os-muted); font-size: 12px;">↗</span></a>
+                    <a href="#"
+                        style="color: var(--os-text); text-decoration: none; font-weight: 600; font-size: 15px; display: flex; justify-content: space-between; align-items: center;"
+                        onmouseover="this.style.color='#f59e0b'"
+                        onmouseout="this.style.color='var(--os-text)'">Opportunities <span
+                            style="color: var(--os-muted); font-size: 12px;">↗</span></a>
                 </div>
             </div>
         </div>

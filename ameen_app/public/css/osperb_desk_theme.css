@@ -13,12 +13,28 @@
     --os-radius: 16px;
 }
 
-/* Background */
+.page-container {
+    background-color: transparent !important;
+}
+
+/* Background overrides from frappe defaults */
+html {
+    background: var(--os-bg) !important;
+}
+
 body.osperb-theme-active,
 body.osperb-theme-active .app-wrapper,
 body.osperb-theme-active .desk-container,
-body.osperb-theme-active .layout-main-section-wrapper {
+body.osperb-theme-active .layout-main-section-wrapper,
+body.osperb-theme-active .layout-main-section,
+body.osperb-theme-active .page-wrapper {
     background: var(--os-bg) !important;
+}
+
+body.osperb-theme-active .form-page,
+body.osperb-theme-active .page-content,
+body.osperb-theme-active .form-layout {
+    background-color: #FFFFFF !important;
 }
 
 /* Topbar */
@@ -35,9 +51,32 @@ body.osperb-theme-active .desk-sidebar {
     display: none !important;
 }
 
-/* Give space for our new rail + panel */
-body.osperb-theme-active .layout-main-section-wrapper {
-    padding-left: 310px !important;
+/* Give space for our new permanent rail across the layout */
+body.osperb-theme-active .layout-main-section-wrapper,
+body.osperb-theme-active header.navbar,
+body.osperb-theme-active .page-head {
+    padding-left: 86px !important;
+    transition: padding-left 0.3s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+body.osperb-theme-active.osperb-panel-open .layout-main-section-wrapper,
+body.osperb-theme-active.osperb-panel-open header.navbar,
+body.osperb-theme-active.osperb-panel-open .page-head {
+    padding-left: 322px !important;
+}
+
+/* Align page header width with the form table width so it's not hidden behind flyouts */
+body.osperb-theme-active .page-head .page-head-content,
+body.osperb-theme-active .page-head .container,
+body.osperb-theme-active .page-body .container,
+body.osperb-theme-active .page-body {
+    max-width: 1040px !important;
+    margin: 0 auto !important;
+}
+
+/* Force standard desktop grid handling for when sidebar is hidden */
+body.osperb-theme-active .desk-container {
+    display: block !important;
 }
 
 /* Our injected container */
@@ -54,6 +93,15 @@ body.osperb-theme-active .layout-main-section-wrapper {
     align-items: center;
     padding: 12px 10px;
     gap: 10px;
+}
+
+#osperb-rail::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: -25px;
+    width: 25px;
+    height: 100%;
 }
 
 #osperb-rail .os-logo {
@@ -103,10 +151,34 @@ body.osperb-theme-active .layout-main-section-wrapper {
     background: #fff;
     border: 1px solid var(--os-border);
     border-radius: 18px;
-    box-shadow: var(--os-shadow);
+    box-shadow: 0 16px 40px rgba(15, 23, 42, 0.15);
     z-index: 9998;
     overflow: auto;
     padding: 14px;
+
+    /* Hover flyout logic */
+    opacity: 0;
+    visibility: hidden;
+    transform: translateX(-15px);
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+body.osperb-theme-active.osperb-panel-open #osperb-panel {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(0);
+}
+
+@keyframes os-fade-slide {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 #osperb-panel .os-title {
@@ -141,14 +213,68 @@ body.osperb-theme-active .layout-main-section-wrapper {
 
 /* Workspace cards styling (same modern style) */
 body.osperb-theme-active .card,
-body.osperb-theme-active .widget,
-body.osperb-theme-active .widget-body,
-body.osperb-theme-active .widget-group,
+body.osperb-theme-active .onboarding-widget-box,
+body.osperb-theme-active .shortcut-widget-box,
+body.osperb-theme-active .links-widget-box,
+body.osperb-theme-active .number-widget-box,
 body.osperb-theme-active .dashboard-widget {
     background: var(--os-card) !important;
     border: 1px solid var(--os-border) !important;
     border-radius: var(--os-radius) !important;
     box-shadow: var(--os-shadow) !important;
+    padding: 20px !important;
+    margin-bottom: 24px !important;
+}
+
+/* Soften form and general borders to reduce "too many borders" feel */
+body.osperb-theme-active .list-row {
+    border-bottom: 1px solid rgba(15, 23, 42, .04) !important;
+}
+
+/* Ensure no nested double borders for widget components */
+body.osperb-theme-active .widget,
+body.osperb-theme-active .widget-group,
+body.osperb-theme-active .widget-head,
+body.osperb-theme-active .widget-title,
+body.osperb-theme-active .widget-body {
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+}
+
+/* Remove default widget padding since the wrapper box has it now */
+body.osperb-theme-active .widget {
+    padding: 0 !important;
+}
+
+/* Give top margin/padding to standard views so they aren't cramped */
+body.osperb-theme-active .page-body {
+    padding-top: 24px !important;
+}
+
+body.osperb-theme-active .frappe-list,
+body.osperb-theme-active .list-filters {
+    margin-top: 24px !important;
+}
+
+body.osperb-theme-active .list-row,
+body.osperb-theme-active .list-row-head {
+    padding: 14px 20px !important;
+}
+
+/* Form child tables top margin */
+body.osperb-theme-active .form-grid {
+    margin-top: 16px !important;
+}
+
+/* Form footer (Comments, Activity) padding and styling */
+body.osperb-theme-active .form-footer {
+    padding: 24px 30px !important;
+    background: var(--os-card) !important;
+    border: 1px solid var(--os-border) !important;
+    border-radius: var(--os-radius) !important;
+    box-shadow: var(--os-shadow) !important;
+    margin-top: 32px !important;
 }
 
 body.osperb-theme-active .btn-primary {

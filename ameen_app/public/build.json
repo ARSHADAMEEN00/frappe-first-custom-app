@@ -1,0 +1,8 @@
+{
+  "css/osperb_desk_theme.css": [
+    "public/css/osperb_desk_theme.css"
+  ],
+  "js/osperb_desk_theme.js": [
+    "public/js/osperb_desk_theme.js"
+  ]
+}

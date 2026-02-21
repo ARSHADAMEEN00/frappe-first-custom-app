@@ -8,8 +8,9 @@ app_license = "mit"
 # Apps
 # ------------------
 
-app_include_css = "/assets/ameen_app/css/osperb_desk_theme.css"
-app_include_js = "/assets/ameen_app/js/osperb_desk_theme.js"
+import time
+app_include_css = "/assets/ameen_app/css/osperb_desk_theme.css?v={}".format(time.time())
+app_include_js = "/assets/ameen_app/js/osperb_desk_theme.js?v={}".format(time.time())
 
 # required_apps = []
 
