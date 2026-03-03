@@ -183,6 +183,27 @@
                         { label: "Customer Group", url: "/app/customer-group" },
                         { label: "Territory", url: "/app/territory" },
                         { label: "Opportunity", url: "/app/opportunity" },
+                        { label: "Quotation", url: "/app/quotation" },
+                    ],
+                },
+            ],
+        },
+
+        // window quotation
+        {
+            key: "Window Quotation",
+            icon: `<svg stroke="currentColor" fill="none" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" height="20" width="20" xmlns="http://www.w3.org/2000/svg"><path d="M12 20V10"></path><path d="M12 20a2 2 0 1 0 0-4 2 2 0 0 0 0 4z"></path><path d="M20 10V4a2 2 0 0 0-2-2 2 2 0 0 0-2 2v6"></path><path d="M4 10V4a2 2 0 0 1 2-2 2 2 0 0 1 2 2v6"></path></svg>`,
+            title: "Window Quotation",
+            route: "/app/window-quotation",
+            sections: [
+                {
+                    title: "Window Quotation",
+                    icon: `<svg stroke="currentColor" fill="none" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" height="14" width="14" xmlns="http://www.w3.org/2000/svg"><path d="M12 20V10"></path><path d="M12 20a2 2 0 1 0 0-4 2 2 0 0 0 0 4z"></path><path d="M20 10V4a2 2 0 0 0-2-2 2 2 0 0 0-2 2v6"></path><path d="M4 10V4a2 2 0 0 1 2-2 2 2 0 0 1 2 2v6"></path></svg>`,
+                    open: true,
+                    links: [
+                        { label: "Window Quotation", url: "/app/window-quotation" },
+                        { label: "Window Dealer", url: "/app/window-dealer" },
+                        { label: "Customer", url: "/app/customer" },
                     ],
                 },
             ],
@@ -272,6 +293,20 @@
         }
     }
 
+    function toRouteKey(key) {
+        return String(key || "")
+            .trim()
+            .toLowerCase()
+            .replace(/[_\s]+/g, "-")
+            .replace(/-+/g, "-");
+    }
+
+    function moduleHref(m) {
+        if (m && m.route) return m.route;
+        if (m && m.key === "Home") return "/app/home";
+        return `/app/${toRouteKey(m && m.key)}`;
+    }
+
     // ------------------------------------------------------------
     // 3) UI Builders
     // ------------------------------------------------------------
@@ -288,7 +323,7 @@
 
         NAV.forEach((m, idx) => {
             const item = document.createElement("a");
-            item.href = m.key === "Home" ? "/app/home" : `/app/${m.key.toLowerCase()}`;
+            item.href = moduleHref(m);
             item.className = "os-item";
             item.dataset.key = m.key;
             item.title = m.key;

@@ -81,7 +81,7 @@ body.osperb-theme-active .desk-container {
     height: 100vh;
     width: 74px;
     background: var(--os-deep);
-    z-index: 9999;
+    z-index: 1030;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -162,7 +162,7 @@ body.osperb-theme-active .desk-container {
     border: 1px solid var(--os-border);
     border-radius: 18px;
     box-shadow: 0 16px 40px rgba(15, 23, 42, 0.15);
-    z-index: 9998;
+    z-index: 1029;
     overflow: auto;
     padding: 14px;
 

@@ -261,6 +261,22 @@
                 </div>
                 <span style="font-size: 15px; color: var(--os-text);">Leaderboard</span>
             </div>
+            <div style="flex: 1; min-width: 180px; background: white; border: 1px solid var(--os-border); padding: 18px 24px; border-radius: 14px; font-weight: 600; display: flex; align-items: center; gap: 12px; cursor: pointer; transition: all .2s; box-shadow: 0 2px 4px rgba(0,0,0,0.02);"
+                onclick="frappe.set_route('window-quotation')"
+                onmouseover="this.style.transform='translateY(-3px)';this.style.boxShadow='var(--os-shadow)';this.style.borderColor='#1677ff';"
+                onmouseout="this.style.transform='none';this.style.boxShadow='0 2px 4px rgba(0,0,0,0.02)';this.style.borderColor='var(--os-border)';"
+                title="Steel Window Quotations">
+                <div
+                    style="width: 40px; height: 40px; border-radius: 10px; background: #eff6ff; color: #1677ff; display: flex; align-items: center; justify-content: center;">
+                    <svg stroke="currentColor" fill="none" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round"
+                        stroke-linejoin="round" height="20" width="20" xmlns="http://www.w3.org/2000/svg">
+                        <rect x="2" y="3" width="20" height="18" rx="2" />
+                        <line x1="2" y1="12" x2="22" y2="12" />
+                        <line x1="12" y1="3" x2="12" y2="21" />
+                    </svg>
+                </div>
+                <span style="font-size: 15px; color: var(--os-text);">Window Quotations</span>
+            </div>
         </div>
     </div>
 
@@ -401,6 +417,67 @@
                             style="color: var(--os-muted); font-size: 12px;">↗</span></a>
                 </div>
             </div>
+
+            <!-- ── Recent Window Quotations card ── -->
+            <div class="master-card"
+                style="background: white; border: 1px solid var(--os-border); border-radius: 16px; padding: 24px; box-shadow: 0 4px 12px rgba(15, 23, 42, .02); transition: all 0.2s;"
+                onmouseover="this.style.boxShadow='var(--os-shadow)';"
+                onmouseout="this.style.boxShadow='0 4px 12px rgba(15, 23, 42, .02)';">
+                <div
+                    style="font-weight: 800; font-size: 17px; margin-bottom: 20px; color: #1677ff; display: flex; align-items: center; justify-content: space-between;">
+                    <div style="display:flex;align-items:center;gap:12px;">
+                        <div
+                            style="width: 40px; height: 40px; background: rgba(22, 119, 255, 0.08); border-radius: 10px; color: #1677ff; display: flex; align-items: center; justify-content: center;">
+                            <svg stroke="currentColor" fill="none" stroke-width="2" viewBox="0 0 24 24"
+                                stroke-linecap="round" stroke-linejoin="round" height="20" width="20"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <rect x="2" y="3" width="20" height="18" rx="2" />
+                                <line x1="2" y1="12" x2="22" y2="12" />
+                                <line x1="12" y1="3" x2="12" y2="21" />
+                            </svg>
+                        </div>
+                        Window Quotations
+                    </div>
+                    <a href="#" onclick="frappe.set_route('window-quotation'); return false;"
+                        style="font-size:12px;font-weight:600;color:#1677ff;text-decoration:none;">View All ↗</a>
+                </div>
+                <div id="os-wq-recent-list" style="display: flex; flex-direction: column; gap: 10px;">
+                    <div style="color:#94a3b8;font-size:13px;">Loading…</div>
+                </div>
+            </div>
         </div>
     </div>
 </div>
+<script>
+    (function () {
+        function loadRecentQuotations() {
+            if (!frappe || !frappe.call) { setTimeout(loadRecentQuotations, 600); return; }
+            frappe.call({
+                method: 'ameen_app.api.get_window_quotations',
+                args: { limit: 5 },
+                callback: function (r) {
+                    var el = document.getElementById('os-wq-recent-list');
+                    if (!el) return;
+                    if (!r.message || r.message.status !== 'success' || !r.message.data.length) {
+                        el.innerHTML = '<a href="#" onclick="frappe.set_route(\'window-quotation\'); return false;" style="color:#1677ff;font-size:13px;font-weight:600;">+ Create first quotation</a>';
+                        return;
+                    }
+                    var html = '';
+                    r.message.data.forEach(function (q, i) {
+                        var isLast = i === r.message.data.length - 1;
+                        var badgeColor = q.status === 'Submitted' ? '#10b981' : '#f59e0b';
+                        html += '<div style="display:flex;justify-content:space-between;align-items:center;' + (isLast ? '' : 'padding-bottom:10px;border-bottom:1px solid #f1f5f9;') + '">' +
+                            '<div>' +
+                            '<div style="font-weight:700;font-size:14px;color:#1677ff;cursor:pointer;" onclick="frappe.set_route(\'window-quotation\')">' + q.name + '</div>' +
+                            '<div style="font-size:12px;color:#64748b;">' + (q.customer || '—') + ' &bull; ' + (q.transaction_date || '') + '</div>' +
+                            '</div>' +
+                            '<span style="font-size:11px;font-weight:700;padding:3px 9px;border-radius:12px;background:' + (q.status === 'Submitted' ? '#d1fae5' : '#fef3c7') + ';color:' + badgeColor + ';">' + (q.status || 'Draft') + '</span>' +
+                            '</div>';
+                    });
+                    el.innerHTML = html;
+                }
+            });
+        }
+        setTimeout(loadRecentQuotations, 800);
+    })();
+</script>

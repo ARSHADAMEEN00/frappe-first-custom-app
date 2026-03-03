@@ -5,6 +5,9 @@ app_description = "it is a demo app"
 app_email = "ameen@app.com"
 app_license = "mit"
 
+# Required for multi-site compatibility - prevents NoneType error during migrate
+notification_config = []
+
 # Apps
 # ------------------
 
@@ -251,3 +254,4 @@ app_include_js = "/assets/ameen_app/js/osperb_desk_theme.js?v={}".format(time.ti
 # List of apps whose translatable strings should be excluded from this app's translations.
 # ignore_translatable_strings_from = []
 
+# Force Reload
