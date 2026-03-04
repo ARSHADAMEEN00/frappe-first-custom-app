@@ -44,7 +44,8 @@ var WQ = (function () {
             _setupControls();
             _bindAll();
             _loadQuotations();
-            _loadMasterData();
+            // Pre-warm master data cache so it's ready when user opens Add Item dialog
+            _loadMasterData(null);
         }, 350);
     }
 
@@ -198,75 +199,111 @@ var WQ = (function () {
     }
 
     /* ─────────────── MASTER DATA DYNAMICS ─────────────── */
-    function _loadMasterData() {
+
+    /**
+     * Fetch master data from API. If already loaded, immediately fires callback.
+     * If not yet loaded, fetches first then fires callback.
+     * This guarantees _renderMasterDataFields never runs on empty data.
+     */
+    function _loadMasterData(callback) {
+        if (Object.keys(_masterData).length > 0) {
+            // Already loaded — use cache
+            if (callback) callback();
+            return;
+        }
         frappe.call({
             method: 'ameen_app.master_data.api.get_master_data',
             callback: function (r) {
-                if (r.message) {
-                    _masterData = r.message;
-                    _renderMasterDataFields();
-                }
+                _masterData = r.message || {};
+                if (callback) callback();
             }
         });
     }
 
+    /**
+     * Render master data select dropdowns filtered by the selected item_type.
+     * Types with ZERO matching items are completely hidden.
+     * Types with matching items show a styled <select> with those options.
+     */
     function _renderMasterDataFields() {
         var container = $id('wq-dynamic-master-fields');
         if (!container) return;
 
-        var currentItemType = ($id('wq-item-type') || {}).value || 'Window'; // Default to Window
+        var typeEl = $id('wq-item-type');
+        var currentItemType = typeEl ? typeEl.value : 'Window';
         var types = Object.keys(_masterData);
+
+        if (types.length === 0) {
+            container.innerHTML = '<p style="color:#94a3b8;font-size:13px;text-align:center;padding:12px 0;">No master data configured yet.</p>';
+            return;
+        }
+
+        // Preserve existing selections so they survive a re-render
+        var savedValues = {};
+        container.querySelectorAll('.wq-master-input').forEach(function (el) {
+            savedValues[el.getAttribute('data-master-type')] = el.value;
+        });
+
         var html = '<div style="display:grid; grid-template-columns: 1fr 1fr; gap: 14px;">';
+        var hasAny = false;
 
         types.forEach(function (type) {
             var items = _masterData[type];
+
+            // Filter: only items whose item_type equals currentItemType
+            // (items with no item_type set match everything)
             var validItems = items.filter(function (it) {
                 return !it.item_type || it.item_type === currentItemType;
             });
 
-            // Do not show the Master Data Type selector if there are no matching options
+            // Hide this type entirely if it has no matching items
             if (validItems.length === 0) return;
+            hasAny = true;
+
+            var savedVal = savedValues[type] || '';
 
             html += '<div class="wq-selector" style="margin-bottom:0;">' +
                 '<div class="wq-selector-left">' +
                 '<div class="wq-selector-text">' +
                 '<div class="wq-selector-label">' + type + '</div>' +
-                '<select class="wq-selector-input wq-master-input" data-master-type="' + type + '" style="background:transparent;border:none;width:100%;outline:none;font-weight:600;color:#0f172a;cursor:pointer;">' +
-                '<option value="">Select ' + type + '</option>';
+                '<select class="wq-selector-input wq-master-input" data-master-type="' + type + '"' +
+                ' style="background:transparent;border:none;width:100%;outline:none;font-weight:600;color:#0f172a;cursor:pointer;font-size:14px;">' +
+                '<option value="">— Select ' + type + ' —</option>';
 
             validItems.forEach(function (it) {
-                html += '<option value="' + (it.item_code || it.item_name) + '">' + it.item_name + '</option>';
+                var val = it.item_code || it.item_name;
+                var selected = (val === savedVal || it.item_name === savedVal) ? ' selected' : '';
+                html += '<option value="' + val + '"' + selected + '>' + it.item_name + '</option>';
             });
 
             html += '</select>' +
                 '</div>' +
                 '</div>' +
-                '<button class="wq-add-plus" onclick="frappe.set_route(\'Form\', \'Master Data Type\', \'' + type + '\')" title="Edit ' + type + '">+</button>' +
+                '<button class="wq-add-plus" onclick="frappe.set_route(\'Form\', \'Master Data Type\', \'' + type + '\')" title="Add/Edit ' + type + '">+</button>' +
                 '</div>';
         });
+
         html += '</div>';
+
+        if (!hasAny) {
+            html = '<p style="color:#94a3b8;font-size:13px;text-align:center;padding:12px 0;">No master data items configured for <strong>' + currentItemType + '</strong>.<br>' +
+                '<a href="/app/master-data-type" target="_blank" style="color:#1677ff;">Open Master Data Settings →</a></p>';
+        }
+
         container.innerHTML = html;
     }
 
     /* ─────────────── ADD ITEM DIALOG ─────────────── */
     function openAddItemDialog() {
         _editIdx = null;
-        // Reset fields
+
+        // Reset basic fields first
         var typeEl = $id('wq-item-type');
-        if (typeEl) {
-            typeEl.value = 'Window'; // Default to Window
-        }
+        if (typeEl) typeEl.value = 'Window';
 
         var particulars = $id('wq-particulars');
         if (particulars) particulars.value = '';
 
-        // Force a re-render of master data for default Window type
-        _renderMasterDataFields();
-
-        // Reset dynamic master data fields
-        document.querySelectorAll('.wq-master-input').forEach(function (el) {
-            el.value = '';
-        });
         ['wq-qty', 'wq-rate'].forEach(function (id) { var el = $id(id); if (el) el.value = (id === 'wq-qty' ? 1 : 0); });
         ['wq-width', 'wq-height'].forEach(function (id) { var el = $id(id); if (el) el.value = 300; });
         var cc = $id('wq-col-count'); if (cc) cc.value = '3';
@@ -277,8 +314,15 @@ var WQ = (function () {
         _buildColumnTabs(3);
         updatePreview();
 
+        // Show dialog
         var overlay = $id('wq-add-item-overlay');
         if (overlay) overlay.classList.add('active');
+
+        // Load master data (uses cache if available), THEN render dropdowns
+        // This guarantees the selects are never rendered on empty data
+        _loadMasterData(function () {
+            _renderMasterDataFields();
+        });
     }
 
     function closeAddItemDialog() {

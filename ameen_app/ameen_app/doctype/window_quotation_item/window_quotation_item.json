@@ -10,9 +10,38 @@
         "qty",
         "width",
         "height",
+        "section_master_data",
         "channel_size",
         "fixing_type",
-        "manchary_design",
+        "manchary",
+        "grill_type",
+        "hinge_type",
+        "lock_type",
+        "handle_type",
+        "bolting_type",
+        "door_sill",
+        "door_sill_type",
+        "door_design",
+        "door_lock",
+        "mesh_type",
+        "mesh_window_type",
+        "mesh_window_lock",
+        "mesh_hinge_type",
+        "mesh_hinges",
+        "mesh_lock",
+        "pane_type",
+        "window_pane_type",
+        "window_pane_design",
+        "window_louver_type",
+        "window_panel_type",
+        "louver_type",
+        "color_code",
+        "color_type",
+        "out_fan_type",
+        "double_door_type",
+        "column_connection_hinge",
+        "design",
+        "section_column",
         "column_count",
         "column_details",
         "master_properties",
@@ -31,7 +60,6 @@
             "fieldname": "item_type",
             "fieldtype": "Select",
             "label": "Item",
-            "default": "Window",
             "options": "\nWindow\nDoor Frame\nDoor\nMesh Window\nGrill Window\nVentilator Window\nFully Finished Window\nFully Finished Door\nDoor Cum Window",
             "in_list_view": 1
         },
@@ -63,6 +91,11 @@
             "reqd": 1
         },
         {
+            "fieldname": "section_master_data",
+            "fieldtype": "Section Break",
+            "label": "Master Data"
+        },
+        {
             "fieldname": "channel_size",
             "fieldtype": "Data",
             "label": "Channel Size"
@@ -73,9 +106,149 @@
             "label": "Fixing Type"
         },
         {
-            "fieldname": "manchary_design",
+            "fieldname": "manchary",
             "fieldtype": "Data",
-            "label": "Manchary Design"
+            "label": "Manchary"
+        },
+        {
+            "fieldname": "grill_type",
+            "fieldtype": "Data",
+            "label": "Grill Type"
+        },
+        {
+            "fieldname": "hinge_type",
+            "fieldtype": "Data",
+            "label": "Hinge Type"
+        },
+        {
+            "fieldname": "lock_type",
+            "fieldtype": "Data",
+            "label": "Lock Type"
+        },
+        {
+            "fieldname": "handle_type",
+            "fieldtype": "Data",
+            "label": "Handle Type"
+        },
+        {
+            "fieldname": "bolting_type",
+            "fieldtype": "Data",
+            "label": "Bolting Type"
+        },
+        {
+            "fieldname": "door_sill",
+            "fieldtype": "Data",
+            "label": "Door Sill"
+        },
+        {
+            "fieldname": "door_sill_type",
+            "fieldtype": "Data",
+            "label": "Door Sill Type"
+        },
+        {
+            "fieldname": "door_design",
+            "fieldtype": "Data",
+            "label": "Door Design"
+        },
+        {
+            "fieldname": "door_lock",
+            "fieldtype": "Data",
+            "label": "Door Lock"
+        },
+        {
+            "fieldname": "mesh_type",
+            "fieldtype": "Data",
+            "label": "Mesh Type"
+        },
+        {
+            "fieldname": "mesh_window_type",
+            "fieldtype": "Data",
+            "label": "Mesh Window Type"
+        },
+        {
+            "fieldname": "mesh_window_lock",
+            "fieldtype": "Data",
+            "label": "Mesh Window Lock"
+        },
+        {
+            "fieldname": "mesh_hinge_type",
+            "fieldtype": "Data",
+            "label": "Mesh Hinge Type"
+        },
+        {
+            "fieldname": "mesh_hinges",
+            "fieldtype": "Data",
+            "label": "Mesh Hinges"
+        },
+        {
+            "fieldname": "mesh_lock",
+            "fieldtype": "Data",
+            "label": "Mesh Lock"
+        },
+        {
+            "fieldname": "pane_type",
+            "fieldtype": "Data",
+            "label": "Pane Type"
+        },
+        {
+            "fieldname": "window_pane_type",
+            "fieldtype": "Data",
+            "label": "Window Pane Type"
+        },
+        {
+            "fieldname": "window_pane_design",
+            "fieldtype": "Data",
+            "label": "Window Pane Design"
+        },
+        {
+            "fieldname": "window_louver_type",
+            "fieldtype": "Data",
+            "label": "Window Louver Type"
+        },
+        {
+            "fieldname": "window_panel_type",
+            "fieldtype": "Data",
+            "label": "Window Panel Type"
+        },
+        {
+            "fieldname": "louver_type",
+            "fieldtype": "Data",
+            "label": "Louver Type"
+        },
+        {
+            "fieldname": "color_code",
+            "fieldtype": "Data",
+            "label": "Color Code"
+        },
+        {
+            "fieldname": "color_type",
+            "fieldtype": "Data",
+            "label": "Color Type"
+        },
+        {
+            "fieldname": "out_fan_type",
+            "fieldtype": "Data",
+            "label": "Out Fan Type"
+        },
+        {
+            "fieldname": "double_door_type",
+            "fieldtype": "Data",
+            "label": "Double Door Type"
+        },
+        {
+            "fieldname": "column_connection_hinge",
+            "fieldtype": "Data",
+            "label": "Column Connection Hinge"
+        },
+        {
+            "fieldname": "design",
+            "fieldtype": "Data",
+            "label": "Design"
+        },
+        {
+            "fieldname": "section_column",
+            "fieldtype": "Section Break",
+            "label": "Column & Pricing"
         },
         {
             "fieldname": "column_count",
