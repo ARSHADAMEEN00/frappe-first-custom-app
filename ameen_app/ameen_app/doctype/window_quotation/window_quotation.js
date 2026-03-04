@@ -200,7 +200,8 @@ function _do_apply_options(frm, cdt, cdn, master_data, dialog_fields, grid_row) 
  * the updated df (e.g. changing Data → Select).
  *
  * This properly re-instantiates the Frappe control class so the DOM
- * element matches the new fieldtype.
+ * element matches the new fieldtype, binds explicit change handlers
+ * for model persistence, and restores the existing row value.
  */
 function _replace_field_control(grid_row, fieldname, new_df) {
     var form = grid_row.grid_form;
@@ -210,15 +211,19 @@ function _replace_field_control(grid_row, fieldname, new_df) {
     var old_field = layout.fields_dict[fieldname];
     if (!old_field) return;
 
+    var cdt = grid_row.doc.doctype;
+    var cdn = grid_row.doc.name;
+    var existing_value = grid_row.doc[fieldname] || '';
+    var new_field = null;
+
     // Use layout.replace_field if available (Frappe v14+)
-    // This properly handles replacing the control, updating fields_dict, etc.
     if (typeof layout.replace_field === 'function') {
         layout.replace_field(fieldname, new_df, true);
-        // After replace, refresh the new field with current doc
-        var new_field = layout.fields_dict[fieldname];
+        new_field = layout.fields_dict[fieldname];
         if (new_field) {
+            new_field.doctype = cdt;
             new_field.doc = grid_row.doc;
-            new_field.docname = grid_row.doc.name;
+            new_field.docname = cdn;
             new_field.refresh();
         }
     } else {
@@ -226,20 +231,18 @@ function _replace_field_control(grid_row, fieldname, new_df) {
         var $wrapper = old_field.$wrapper;
         if (!$wrapper || !$wrapper.length) return;
 
-        // Create new control
         var parent_el = $wrapper.parent().get(0);
-        var new_field = frappe.ui.form.make_control({
+        new_field = frappe.ui.form.make_control({
             df: new_df,
             parent: parent_el,
-            doctype: grid_row.doc.doctype,
-            docname: grid_row.doc.name,
+            doctype: cdt,
+            docname: cdn,
             frm: grid_row.frm,
             doc: grid_row.doc,
             render_input: true
         });
 
         if (new_field) {
-            // Replace the old wrapper with the new one
             $wrapper.replaceWith(new_field.$wrapper);
             new_field.refresh();
 
@@ -247,12 +250,40 @@ function _replace_field_control(grid_row, fieldname, new_df) {
             layout.fields_dict[fieldname] = new_field;
             form.fields_dict[fieldname] = new_field;
 
-            // Also update in fields_list
             var idx = layout.fields_list.findIndex(function (f) {
                 return f === old_field;
             });
             if (idx !== -1) {
                 layout.fields_list[idx] = new_field;
+            }
+        }
+    }
+
+    // ── Ensure proper model binding and value persistence ──────────────
+    if (new_field) {
+        // Bind an explicit change handler so the selected value always
+        // gets written to locals[cdt][cdn][fieldname] via Frappe's model.
+        // This is crucial because dynamically replaced controls may lose
+        // their internal binding.
+        var $select = new_field.$wrapper.find('select');
+        if ($select.length) {
+            $select.off('change.wq_persist').on('change.wq_persist', function () {
+                var val = $(this).val();
+                frappe.model.set_value(cdt, cdn, fieldname, val);
+            });
+        }
+
+        // Also override the control's get_value → set_model_value chain
+        // to ensure any programmatic set also persists.
+        new_field.doctype = cdt;
+        new_field.docname = cdn;
+
+        // Restore the existing saved value so reopened rows display correctly
+        if (existing_value) {
+            new_field.set_value(existing_value);
+            // Also ensure the model is in sync
+            if (grid_row.doc[fieldname] !== existing_value) {
+                frappe.model.set_value(cdt, cdn, fieldname, existing_value);
             }
         }
     }
