@@ -28,6 +28,7 @@ var WQ = (function () {
     /* ── state ── */
     var _items = [];   // list of item objects staged in the create form
     var _editIdx = null; // index of item being edited (-1 = new)
+    var _masterData = {}; // holds dynamic master types and items
     var customer_control = null;
     var dealer_control = null;
 
@@ -43,6 +44,7 @@ var WQ = (function () {
             _setupControls();
             _bindAll();
             _loadQuotations();
+            _loadMasterData();
         }, 350);
     }
 
@@ -98,6 +100,14 @@ var WQ = (function () {
             if (el) el.addEventListener('change', updatePreview);
             if (el) el.addEventListener('input', updatePreview);
         });
+
+        // Dynamic filtering based on item type
+        var typeEl = $id('wq-item-type');
+        if (typeEl) {
+            typeEl.addEventListener('change', function () {
+                _renderMasterDataFields();
+            });
+        }
 
         // Rate → amount
         var rateEl = $id('wq-rate');
@@ -187,12 +197,75 @@ var WQ = (function () {
         });
     }
 
+    /* ─────────────── MASTER DATA DYNAMICS ─────────────── */
+    function _loadMasterData() {
+        frappe.call({
+            method: 'ameen_app.master_data.api.get_master_data',
+            callback: function (r) {
+                if (r.message) {
+                    _masterData = r.message;
+                    _renderMasterDataFields();
+                }
+            }
+        });
+    }
+
+    function _renderMasterDataFields() {
+        var container = $id('wq-dynamic-master-fields');
+        if (!container) return;
+
+        var currentItemType = ($id('wq-item-type') || {}).value || 'Window'; // Default to Window
+        var types = Object.keys(_masterData);
+        var html = '<div style="display:grid; grid-template-columns: 1fr 1fr; gap: 14px;">';
+
+        types.forEach(function (type) {
+            var items = _masterData[type];
+            var validItems = items.filter(function (it) {
+                return !it.item_type || it.item_type === currentItemType;
+            });
+
+            // Do not show the Master Data Type selector if there are no matching options
+            if (validItems.length === 0) return;
+
+            html += '<div class="wq-selector" style="margin-bottom:0;">' +
+                '<div class="wq-selector-left">' +
+                '<div class="wq-selector-text">' +
+                '<div class="wq-selector-label">' + type + '</div>' +
+                '<select class="wq-selector-input wq-master-input" data-master-type="' + type + '" style="background:transparent;border:none;width:100%;outline:none;font-weight:600;color:#0f172a;cursor:pointer;">' +
+                '<option value="">Select ' + type + '</option>';
+
+            validItems.forEach(function (it) {
+                html += '<option value="' + (it.item_code || it.item_name) + '">' + it.item_name + '</option>';
+            });
+
+            html += '</select>' +
+                '</div>' +
+                '</div>' +
+                '<button class="wq-add-plus" onclick="frappe.set_route(\'Form\', \'Master Data Type\', \'' + type + '\')" title="Edit ' + type + '">+</button>' +
+                '</div>';
+        });
+        html += '</div>';
+        container.innerHTML = html;
+    }
+
     /* ─────────────── ADD ITEM DIALOG ─────────────── */
     function openAddItemDialog() {
         _editIdx = null;
         // Reset fields
-        ['wq-particulars', 'wq-channel', 'wq-fixing', 'wq-manchary'].forEach(function (id) {
-            var el = $id(id); if (el) el.value = '';
+        var typeEl = $id('wq-item-type');
+        if (typeEl) {
+            typeEl.value = 'Window'; // Default to Window
+        }
+
+        var particulars = $id('wq-particulars');
+        if (particulars) particulars.value = '';
+
+        // Force a re-render of master data for default Window type
+        _renderMasterDataFields();
+
+        // Reset dynamic master data fields
+        document.querySelectorAll('.wq-master-input').forEach(function (el) {
+            el.value = '';
         });
         ['wq-qty', 'wq-rate'].forEach(function (id) { var el = $id(id); if (el) el.value = (id === 'wq-qty' ? 1 : 0); });
         ['wq-width', 'wq-height'].forEach(function (id) { var el = $id(id); if (el) el.value = 300; });
@@ -237,18 +310,25 @@ var WQ = (function () {
         }
 
         var rate = parseFloat(($id('wq-rate') || {}).value) || 0;
+
+        // Harvest dynamic master data
+        var masterProps = {};
+        document.querySelectorAll('.wq-master-input').forEach(function (el) {
+            if (el.value) masterProps[el.getAttribute('data-master-type')] = el.value;
+        });
+
+        var actualItemType = ($id('wq-item-type') || {}).value || 'Window';
+
         var item = {
             item_no: _items.length + 1,
-            item_type: 'Window',
+            item_type: actualItemType,
             particulars: particulars,
             qty: qty,
             width: width,
             height: height,
-            channel_size: ($id('wq-channel') || {}).value || '',
-            fixing_type: ($id('wq-fixing') || {}).value || '',
-            manchary_design: ($id('wq-manchary') || {}).value || '',
             column_count: colCount,
             column_details: JSON.stringify(colDetails),
+            master_properties: JSON.stringify(masterProps),
             rate: rate,
             amount: qty * rate,
         };
@@ -280,7 +360,9 @@ var WQ = (function () {
                 '<td style="color:#64748b;">' + item.item_no + '</td>' +
                 '<td style="font-weight:600;">' + item.item_type + '</td>' +
                 '<td style="text-align:center;">' + item.qty + '</td>' +
-                '<td>' + item.particulars + '</td>' +
+                '<td>' + item.particulars + '<div style="font-size:11px;color:#94a3b8;margin-top:4px;">' +
+                Object.keys(JSON.parse(item.master_properties || '{}')).map(function (k) { return k + ': ' + JSON.parse(item.master_properties || '{}')[k] }).join(', ') +
+                '</div></td>' +
                 '<td style="color:#64748b;font-size:13px;">' + item.width + ' × ' + item.height + ' mm</td>' +
                 '<td style="text-align:center;">' + item.column_count + '</td>' +
                 '<td style="text-align:right;">' +

@@ -206,6 +206,14 @@
                         { label: "Customer", url: "/app/customer" },
                     ],
                 },
+                {
+                    title: "Master data",
+                    icon: `<svg stroke="currentColor" fill="none" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" height="14" width="14" xmlns="http://www.w3.org/2000/svg"><polyline points="17 1 21 5 17 9"></polyline><path d="M3 11V9a4 4 0 0 1 4-4h14"></path><polyline points="7 23 3 19 7 15"></polyline><path d="M21 13v2a4 4 0 0 1-4 4H3"></path></svg>`,
+                    open: false,
+                    links: [
+                        { label: "Master Data Type", url: "/app/master-data-type" },
+                    ],
+                },
             ],
         },
 

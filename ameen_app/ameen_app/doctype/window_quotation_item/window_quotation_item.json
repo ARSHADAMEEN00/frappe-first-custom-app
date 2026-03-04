@@ -15,6 +15,7 @@
         "manchary_design",
         "column_count",
         "column_details",
+        "master_properties",
         "rate",
         "amount"
     ],
@@ -28,9 +29,10 @@
         },
         {
             "fieldname": "item_type",
-            "fieldtype": "Data",
+            "fieldtype": "Select",
             "label": "Item",
             "default": "Window",
+            "options": "\nWindow\nDoor Frame\nDoor\nMesh Window\nGrill Window\nVentilator Window\nFully Finished Window\nFully Finished Door\nDoor Cum Window",
             "in_list_view": 1
         },
         {
@@ -85,6 +87,11 @@
             "fieldname": "column_details",
             "fieldtype": "Small Text",
             "label": "Column Details (JSON)"
+        },
+        {
+            "fieldname": "master_properties",
+            "fieldtype": "Small Text",
+            "label": "Master Properties (JSON)"
         },
         {
             "fieldname": "rate",
